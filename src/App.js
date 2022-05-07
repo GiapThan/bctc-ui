@@ -13,7 +13,7 @@ const [subject, setSubject] = useState('')
     emailjs.sendForm('service_zrxtpfm', 'template_hibpgxp', e.target, 'LA1nF3NkRC33V6-yB')
      .then(function(response) { 
          alert( response.status, response.text);
-       }
+       })
      .catch()
     
 } 
