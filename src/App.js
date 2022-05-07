@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import emailjs from '@emailjs/browser'; 
+import emailjs from 'emailjs-com'; 
 import { useState } from 'react'
 
 function App() {
