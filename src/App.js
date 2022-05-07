@@ -18,7 +18,7 @@ const [subject, setSubject] = useState('')
      .catch()
     
 } 
-function Sub {
+function Sub() {
    const transporter = nodemailer.createTransport({ 
            service: "Gmail",
            port: 465,
