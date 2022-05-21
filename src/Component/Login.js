@@ -18,6 +18,7 @@ function Login() {
     })
     const [pass, setPass] = useState('')
     const [isUser, setIsUser] = useState(true)
+    const [dangki, setDangki] = useState(false)
     
     const userNameRef = useRef()
 
@@ -33,6 +34,19 @@ function Login() {
         }
     }
 
+    function handleSubmitLoginPass() {
+        const data = {
+            user: userName,
+            pass: pass
+        }
+        if (dangki) {
+            Socket.emit("client-send-pass-dang-ki", data)
+        }
+        else {
+            Socket.emit('client-send-user-name', data)
+        }
+    }
+
     function handleSubmitLogin() {
         console.log()
         const data = {
@@ -40,12 +54,6 @@ function Login() {
             pass: pass
         }
         if (pass === '') {Socket.emit("client-send-user-name", data)}
-        else {
-            Socket.emit("client-send-pass-dang-ki", {
-                user: userName ,
-                pass: pass
-            })
-        }
     }
 
     const inpUser = (
@@ -77,24 +85,25 @@ function Login() {
                 id="user-name"
                 placeholder="Nhập mật khẩu..."
                 onKeyDown={e => {
-                    if (e.keyCode === 13) handleSubmitLogin()
+                    if (e.keyCode === 13) handleSubmitLoginPass()
                 }}
             />
             <br />
             <button
-                onClick={handleSubmitLogin}
+                onClick={handleSubmitLoginPass}
             >Đăng Nhập</button>
         </div>
     )
     
     useEffect(() => {
 
-        if (userNamePass) {Socket.emit("login", userNamePass)}
+        if (userNamePass) {Socket.emit("login", {user:userNamePass[0], pass: userNamePass[1]})}
 
-        Socket.on("server-send-dang-ky", () => {
+        Socket.on("server-send-dang-ky", (data) => {
             const title = document.getElementById("title")
             title.innerText = "Tên hiển thị chưa được đăng ký / Nhập mật khẩu"
             setIsUser(false)
+            setDangki(true)
         })
         
         Socket.on("server-nhap-pass", () => {
@@ -113,6 +122,11 @@ function Login() {
             Socket.UserName = data[0] || data.user
             CheckAndSaveToLocalStorage(data)
             navi('/home')
+        })
+
+        Socket.on("sai-pass", () => {
+            alert("Bạn nhập sai mật khẩu !!! Mời nhập lại")
+            setPass('')
         })
 
     }, [])

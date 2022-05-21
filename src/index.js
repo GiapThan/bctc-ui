@@ -8,10 +8,10 @@ import reportWebVitals from './reportWebVitals';
 
 export const SocketContext = createContext()
 // deploy server
-const host = 'https://serverchatandgame.herokuapp.com';
+//const host = 'https://serverchatandgame.herokuapp.com';
 
 // locall host
-//const host = 'http://localhost:3050';
+const host = 'http://localhost:3050';
 
 const SocketIO = socketIOClient.connect(host)
 

@@ -198,3 +198,19 @@
   width: 33px;
   height: 33px;
 }
+
+/* mobile */
+@media screen and (max-width: 740px) {
+  #form-login{
+    width: 240px;
+  }
+}
+
+/* pc */
+@media screen and (min-width: 740px) {
+  #form-login{
+    width: 500px;
+    height: auto;
+  }
+  
+}
