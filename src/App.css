@@ -15,14 +15,18 @@ body {
 }
 
 .App-header {
+<<<<<<< HEAD
   background-color: #a6bbe0;
+=======
+  background-color: red;
+>>>>>>> c87ffa212e3dce000b99bcd8f990a07144df31c7
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: blue;
 }
 
 .App-link {
