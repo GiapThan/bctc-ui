@@ -125,8 +125,8 @@ function Login() {
         })
 
         Socket.on("sai-pass", () => {
-            alert("Bạn nhập sai mật khẩu !!! Mời nhập lại")
             setPass('')
+            alert("Bạn nhập sai mật khẩu !!! Mời nhập lại")
         })
 
     }, [])

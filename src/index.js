@@ -11,9 +11,9 @@ export const SocketContext = createContext()
 //const host = 'https://serverchatandgame.herokuapp.com';
 
 // locall host
-const host = 'http://localhost:3050';
+const host = 'http://localhost:3050/client';
 
-const SocketIO = socketIOClient.connect(host)
+const SocketIO = socketIOClient.connect(host, { path: '/socket' })
 
 ReactDOM.render(
   <React.StrictMode>
